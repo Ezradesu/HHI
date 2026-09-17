@@ -29,7 +29,7 @@ const services = [
 
 function HeadlineHandles() {
   return (
-    <div className="relative min-h-[172px] max-w-[916px] max-md:min-h-[126px]">
+    <div className="relative max-w-[916px]">
       <h2
         id="services-heading"
         className="max-w-[840px]  text-left text-[64px] font-normal leading-[1.05] text-[#cd0303] max-md:px-4 max-md:text-[43px]"

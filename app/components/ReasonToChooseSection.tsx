@@ -13,22 +13,26 @@ const reasons: Array<{
 }> = [
   {
     title: "Strategi yang Terukur",
-    description: "Setiap langkah hukum dirancang dengan analisis risiko dan tujuan bisnis yang jelas.",
+    description:
+      "Setiap langkah hukum dirancang dengan analisis risiko dan tujuan bisnis yang jelas.",
     icon: TargetIcon,
   },
   {
     title: "Pengalaman yang Relevan",
-    description: "Pemahaman mendalam terhadap kebutuhan perusahaan di berbagai sektor industri.",
+    description:
+      "Pemahaman mendalam terhadap kebutuhan perusahaan di berbagai sektor industri.",
     icon: BarChartIcon,
   },
   {
     title: "Pendampingan Responsif",
-    description: "Komunikasi yang terbuka dan respons cepat untuk membantu Anda mengambil keputusan.",
+    description:
+      "Komunikasi yang terbuka dan respons cepat untuk membantu Anda mengambil keputusan.",
     icon: ChatBubbleIcon,
   },
   {
     title: "Berorientasi pada Solusi",
-    description: "Nasihat praktis yang membantu menyelesaikan persoalan, bukan menambah kerumitan.",
+    description:
+      "Nasihat praktis yang membantu menyelesaikan persoalan, bukan menambah kerumitan.",
     icon: CheckCircledIcon,
   },
 ];
@@ -83,8 +87,8 @@ export function ReasonToChooseSection() {
               Mitra Hukum yang Memahami Arah Bisnis Anda
             </h2>
             <p className="mt-7 max-w-[560px] text-[24px] font-light leading-[1.35] text-[#797979] max-md:text-[21px]">
-              Kami menggabungkan ketelitian hukum dengan cara berpikir yang
-              strategis, agar setiap keputusan terasa lebih pasti.
+              Kami berusaha memahami kesulitan yang Anda hadapi, menilai
+              risikonya, dan menyusun langkah hukum terbaik.
             </p>
           </div>
         </div>
