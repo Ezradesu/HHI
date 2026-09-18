@@ -1,31 +1,7 @@
 import Image from "next/image";
-
-const services = [
-  {
-    title: "Corporate Law",
-    description: "Pendirian, restrukturisasi, governance.",
-  },
-  {
-    title: "Litigation",
-    description: "Civil & Commercial disputes.",
-  },
-  {
-    title: "Contract Review",
-    description: "Drafting & negotiation",
-  },
-  {
-    title: "Compliance",
-    description: "Regulatory advisory.",
-  },
-  {
-    title: "Corporate Advisory",
-    description: "Legal opinion.",
-  },
-  {
-    title: "Retainer",
-    description: "On going legal support.",
-  },
-];
+import Link from "next/link";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { practiceAreas } from "./services-content";
 
 function HeadlineHandles() {
   return (
@@ -40,7 +16,7 @@ function HeadlineHandles() {
   );
 }
 
-function ServiceCard({ title, description }: (typeof services)[number]) {
+function ServiceCard({ title, description }: (typeof practiceAreas)[number]) {
   return (
     <article className="relative aspect-[344/374] overflow-hidden border border-[#cd0303]/15 bg-[#cd0303] xl:h-[374px] xl:aspect-auto">
       <Image
@@ -82,13 +58,19 @@ export function ServiceSection() {
           <HeadlineHandles />
         </div>
         <p className="mt-7 max-w-[720px] text-[24px] font-light leading-[1.35] text-[#797979] max-md:text-[21px]">
-          Apakah risiko hukum, kontrak yang belum jelas, atau sengketa yang
-          berlarut sedang menghambat langkah bisnis Anda? Kami membantu
-          memetakan persoalan, menilai risikonya, dan menyusun langkah hukum
-          yang lebih terarah.
+          Para advokat HHI memiliki pengetahuan dan pengalaman hukum Indonesia
+          untuk memberikan solusi yang efisien, praktis, dan berkualitas tinggi
+          di area praktik yang paling penting bagi bisnis Anda.
         </p>
-        <div className="mt-[84px] grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
+        <Link
+          href="/services#practice"
+          className="mt-8 inline-flex items-center gap-3 text-[17px] font-medium text-[#cd0303] underline decoration-[#cd0303]/40 underline-offset-8 transition-colors hover:decoration-[#cd0303] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#cd0303]"
+        >
+          Lihat seluruh layanan
+          <ArrowTopRightIcon aria-hidden="true" width={18} height={18} />
+        </Link>
+        <div className="mt-[72px] grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {practiceAreas.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
         </div>

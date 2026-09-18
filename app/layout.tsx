@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { LoadingScreen } from "./components/LoadingScreen";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const stackSansHeadline = localFont({
   src: [
@@ -21,9 +26,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${stackSansHeadline.className} min-h-full bg-[#fff5f5] antialiased`}>
+    <html lang="en" className={cn("h-full", "font-sans", geist.variable)}>
+      <body
+        className={`${stackSansHeadline.className} min-h-full bg-[#fff5f5] antialiased`}
+      >
         {children}
+        <LoadingScreen />
       </body>
     </html>
   );

@@ -1,7 +1,6 @@
 import { FinalCTASection } from "./components/FinalCTASection";
 import { HeroSection } from "./components/HeroSection";
 import { HowWeWorkSection } from "./components/HowWeWorkSection";
-import { LoadingScreen } from "./components/LoadingScreen";
 import { LogoMarquee } from "./components/LogoMarquee";
 import { MeetOurTeamSection } from "./components/MeetOurTeamSection";
 import { Navbar } from "./components/Navbar";
@@ -12,12 +11,10 @@ import { SiteFooter } from "./components/SiteFooter";
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#fff5f5]">
-      <LoadingScreen />
       <Navbar />
 
       <main>
         <HeroSection />
-
         <LogoMarquee />
         <ServiceSection />
         <ReasonToChooseSection />

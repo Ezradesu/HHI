@@ -5,8 +5,8 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
 
 const footerLinks = [
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "How We Work", href: "#how-we-work" },
   { label: "People", href: "#people" },
 ];

@@ -9,14 +9,37 @@ import {
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "People", href: "#people" },
   { label: "News", href: "#news" },
 ];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
+
+  useEffect(() => {
+    const hero = document.getElementById("home");
+
+    if (!hero) {
+      const fallbackReveal = globalThis.setTimeout(
+        () => setIsPastHero(true),
+        0,
+      );
+
+      return () => globalThis.clearTimeout(fallbackReveal);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsPastHero(!entry.isIntersecting),
+      { threshold: 0.01 },
+    );
+
+    observer.observe(hero);
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -36,26 +59,33 @@ export function Navbar() {
   }, [isMenuOpen]);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const showBackground = isPastHero || isMenuOpen;
+  const logoColor = showBackground && !isMenuOpen ? "text-[#cd0303]" : "text-[#fff5f5]";
+  const desktopLinkColor = showBackground && !isMenuOpen ? "text-[#4c4c4c]" : "text-[#fff5f5]";
 
   return (
     <>
       <nav
         aria-label="Primary navigation"
-        className={`sticky top-0 z-[110] flex h-[85px] items-center justify-between px-[61px] transition-colors duration-300 max-lg:px-8 max-md:h-[72px] max-md:px-6 ${isMenuOpen ? "bg-[#cd0303]" : "bg-[#fff5f5]"}`}
+        className="sticky top-0 z-[110] isolate flex h-[85px] items-center justify-between bg-transparent px-[61px] max-lg:px-8 max-md:h-[72px] max-md:px-6"
       >
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 z-0 origin-top transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] motion-reduce:transition-none ${isMenuOpen ? "bg-[#cd0303] translate-y-0" : isPastHero ? "bg-[#fff5f5] translate-y-0" : "-translate-y-full"}`}
+        />
         <Link
           href="/"
           onClick={closeMenu}
-          className={`shrink-0 whitespace-nowrap text-[20px] font-normal leading-none transition-[color,opacity] max-lg:text-[clamp(16px,4.4vw,20px)] ${isMenuOpen ? "pointer-events-none text-[#fff5f5] opacity-0 lg:pointer-events-auto lg:opacity-100" : "text-[#cd0303]"}`}
+          className={`relative z-10 shrink-0 whitespace-nowrap text-[20px] font-normal leading-none transition-[color,opacity] duration-300 max-lg:text-[clamp(16px,4.4vw,20px)] ${isMenuOpen ? "pointer-events-none text-[#fff5f5] opacity-0 lg:pointer-events-auto lg:opacity-100" : logoColor}`}
         >
           Hidayat, Hendiry &amp; Indrawan
         </Link>
 
-        <div className="hidden items-center gap-[40px] text-[20px] font-normal leading-normal lg:flex">
+        <div className={`relative z-10 hidden items-center gap-[40px] text-[20px] font-normal leading-normal lg:flex ${desktopLinkColor}`}>
           {links.map((link) => (
             <Link
               key={link.href}
-              className="text-[#4c4c4c] transition-colors hover:text-[#cd0303] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#cd0303]"
+              className={`transition-colors hover:text-[#cd0303] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#cd0303] ${desktopLinkColor}`}
               href={link.href}
             >
               {link.label}
@@ -77,7 +107,7 @@ export function Navbar() {
             isMenuOpen ? "Close navigation menu" : "Open navigation menu"
           }
           onClick={() => setIsMenuOpen((open) => !open)}
-          className={`flex size-11 items-center justify-center lg:hidden ${isMenuOpen ? "text-[#fff5f5]" : "text-[#cd0303]"} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current`}
+          className={`relative z-10 flex size-11 items-center justify-center lg:hidden ${isMenuOpen || !isPastHero ? "text-[#fff5f5]" : "text-[#cd0303]"} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current`}
         >
           {isMenuOpen ? (
             <Cross1Icon aria-hidden="true" width={24} height={24} />

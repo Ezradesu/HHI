@@ -6,7 +6,7 @@ export function HeroSection() {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative isolate min-h-[780px] overflow-hidden bg-[#3b0505] max-lg:min-h-[720px] max-md:min-h-[680px] lg:min-h-[calc(100svh-85px)]"
+      className="relative isolate -mt-[85px] min-h-[780px] overflow-hidden bg-[#3b0505] max-lg:min-h-[720px] max-md:-mt-[72px] max-md:min-h-[680px] lg:min-h-[100svh]"
     >
       <video
         aria-hidden="true"
@@ -31,7 +31,7 @@ export function HeroSection() {
         className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"
       />
 
-      <div className="relative z-10 flex min-h-[780px] items-end px-[61px] pb-[92px] max-lg:min-h-[720px] max-lg:px-8 max-lg:pb-16 max-md:min-h-[680px] max-md:px-6 max-md:pb-12">
+      <div className="relative z-10 flex min-h-[780px] items-end px-[61px] pb-[92px] max-lg:min-h-[720px] max-lg:px-8 max-lg:pb-16 max-md:min-h-[680px] max-md:px-6 max-md:pb-12 lg:min-h-[100svh]">
         <div className="max-w-[844px]">
           <h1
             id="hero-heading"
